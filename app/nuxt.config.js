@@ -1,5 +1,7 @@
 const pkg = require('./package')
 const trimEnd = require('lodash/trimEnd')
+const url = require("url");
+const fs = require('fs');
 
 module.exports = {
   mode: 'spa',
@@ -46,12 +48,31 @@ module.exports = {
 
   serverMiddleware: [
     {
+      path: 'cover',
+      handler: async (req, res, next) => {      
+        fs.readFile(__dirname + '/assets/cover.json', 'utf8', (err, url) => {
+          res.status(200).json({ url })
+        })
+      }
+    },
+    {
+      path: '/updatecover',
+      handler: async (req, res, next) => {
+        fs.writeFile(__dirname + '/assets/cover.json', url.parse(req.url, true).query.url, function(err) {
+          if(err) {
+            return console.log(err);
+            res.status(200).json({ok: false})
+          }
+          res.status(200).json({ok: true})
+        }); 
+      }
+    },
+    {
       path: '/api',
       handler: async (req, res, next) => {
         let list = []
       
         const testFolder = (__dirname + '/assets/img').replace('/api', '');
-        const fs = require('fs');
       
         fs.readdirSync(testFolder).forEach(file => {
           const column = file.split('_')

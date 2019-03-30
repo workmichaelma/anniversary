@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import { interopDefault } from './utils'
 
-const _7394a99e = () => interopDefault(import('../pages/aa.vue' /* webpackChunkName: "pages/aa" */))
+const _39aeefff = () => interopDefault(import('../pages/upload.vue' /* webpackChunkName: "pages/upload" */))
 const _353a75c4 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 Vue.use(Router)
@@ -80,9 +80,9 @@ export function createRouter() {
     scrollBehavior,
 
     routes: [{
-      path: "/aa",
-      component: _7394a99e,
-      name: "aa"
+      path: "/upload",
+      component: _39aeefff,
+      name: "upload"
     }, {
       path: "/",
       component: _353a75c4,

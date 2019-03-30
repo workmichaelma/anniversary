@@ -3,7 +3,7 @@
     <div class="swiper-wrapper">
       <div class="swiper-slide">
         <div class="swiper-slide__image">
-          <img :src="require(`~/assets/cover.jpg`)"/>
+          <img :src="url"/>
         </div>
       </div>
       <div class="swiper-slide" v-for="(img, k) in list" :key="k">
@@ -35,9 +35,11 @@
 </template>
 
 <script>
+import axios from 'axios'
   export default {
     data () {
       return {
+        url: false,
         swiperOption: {
           spaceBetween: 10,
           zoom: true,
@@ -53,6 +55,12 @@
       current () {
         return this.$store.state.swipe.current
       }
+    },
+    created() {
+      const self = this
+      axios.get('/cover').then(res => {
+        self.url = res.data.url
+      })
     },
     mounted() {
     },

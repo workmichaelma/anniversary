@@ -62,7 +62,7 @@ export default {
   left 0
   width 100%
   height 100%
-  background-image url('~assets/cover.JPG')
+  background-image url('~assets/cover.jpg')
   background-size 100% 100%
   filter blur(3px)
   z-index 1
@@ -78,7 +78,7 @@ export default {
   background-size contain
   background-position 50%
   background-repeat no-repeat
-  background-image url('~assets/cover.JPG')
+  background-image url('~assets/cover.jpg')
   z-index 2
   
   .opener
